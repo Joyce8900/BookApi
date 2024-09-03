@@ -1,0 +1,127 @@
+body{
+  background: hwb(240 39% 17%);
+  font: normal 2.5vh Roboto; 
+}
+#menu{
+  visibility: hidden;
+  height: 5vh;
+  width: 30vh;
+  margin: 1vh;
+  cursor: pointer;
+  border: .1vh solid black;
+  border-radius: 1vh;
+}
+#resposta {
+  display: flex;
+  align-items: center; 
+  gap: 16px; 
+}
+#resposta div {
+  display: flex;
+  flex-direction: column;
+}
+#image{
+  width: 15vh;
+  height: auto;
+}
+tbody{
+  margin: 0 auto;
+  border: .1vh solid grey;
+}
+#buttons {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 1vh;
+  width: 30vh;
+}
+.button {
+  margin: 1vh;
+}
+table{
+  margin: 0 auto;
+}
+th{
+  border: .1vh solid grey;
+}
+td{
+  padding:0 2vh;
+  border: .1vh solid grey;
+}
+input#input{
+  text-align: center;
+  
+}
+#buttonBuscar{
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 1vh;
+  gap: 10vh;
+  text-align: center;
+}
+#buttonBuscar:hover{
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+input {
+  text-decoration: none;
+  border-radius: 5vh;
+  border: .1vh solid gray;
+  display: flex;
+  margin: auto;
+  gap:1vh;
+  width: 30vh;
+ 
+}
+#books {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 16px; 
+}
+
+button{
+  cursor: pointer;
+  border: .1vh solid black;
+  border-radius: 1vh;
+  
+}
+
+header{
+  color: white;
+  text-align: center;
+}
+#msg{
+  display: flex;
+  text-align: center;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  align-content: center;
+  align-items: center;
+}
+section{
+  background: white;
+  border-radius: 2vh;
+  padding: .4vh;
+  width: 200vh;
+  margin: auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.432);
+
+}
+div{
+  text-align: center;
+  padding: 10px;
+}
