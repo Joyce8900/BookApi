@@ -19,7 +19,7 @@ const listar = () => {
         bookCard.classList.add('book-card'); // Adiciona uma classe para estilização
 
         bookCard.innerHTML = `<div id='resposta'>
-          <img src="${book.image}" id='image' alt="${book.title}">
+          <img src='${book.image}' id='image' alt=${book.title}>
           <div>
               <h3>${book.titulo}</h3>
               <p>${book.descricao}</p>
