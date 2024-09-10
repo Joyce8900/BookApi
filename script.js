@@ -5,6 +5,7 @@ const menu = document.getElementById('menu')
 const menu1=()=>{
   buttons.style.visibility = 'visible'
   books.innerHTML = ''
+  res.innerHTML  = ""
 }
 const listar = () => {
   menu.style.visibility = 'visible'
@@ -28,53 +29,49 @@ const listar = () => {
     .catch(error => console.error('Erro:', error)); 
 };
 
-const buscar = ()=>{
+const buscar = () => {
+  menu.style.visibility = 'visible';
+  buttons.style.visibility = 'hidden';
+
   
-  res.innerHTML = ""
-  let pBuscar = document.createElement("p")
-  pBuscar.textContent = "Qual o nome do livro:"
-  res.appendChild(pBuscar)
-  //Entrada de texto
-  let input = window.document.createElement("input")
-  input.id = "input"
-  input.type="text"
-  input.className = "input"
+  res.innerHTML = ''
+
+  const input = document.createElement("input");
+  input.id = "nome";
+  input.placeholder = "Digite o nome do livro";
+
+  const buttonBuscar = document.createElement("button");
+  buttonBuscar.id = "buttonBuscar";
+  buttonBuscar.textContent = "Buscar";
 
   res.appendChild(input);
+  res.appendChild(buttonBuscar);
 
-  //buttom
-  let button = window.document.createElement("button")
-  button.textContent = "Buscar"
-  button.className = "button"
-  button.id = "buttonBuscar"
-  let achado = false
+  buttonBuscar.addEventListener("click", () => {
+    const nome = document.getElementById('nome').value; 
+    const nomeFormatado = nome.replace(/ /g, "%20").toLowerCase()
+    fetch(`https://books-api-v3.vercel.app/api/books/search/?nome=${nomeFormatado}`)
+      .then(response => response.json()) 
+      .then(data =>{
+        data.forEach(book=>{
+          const bookCard = document.createElement('div'); 
+          bookCard.classList.add('book-card'); 
 
-  
-  
-  button.addEventListener("click", function(){
-    
-    let textBuscar = document.getElementById("input").value.toLowerCase().trim()
-    res.innerHTML = ""
-    if (textBuscar.length === 0) {
-      res.innerHTML = "Por favor, digite o nome do livro.";
-      return; 
-    }
-    let achado = false
-    for (let i = 0; i < obj.livros.length; i++) {
-      if (obj.livros[i].nome.toLowerCase().includes(textBuscar)) {
-        res.innerHTML += `<br>Titulo: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}`
-        achado = true
-        break
-      }
+          bookCard.innerHTML = `<div id='respostaBuscar'>
+            <h1>${book.titulo}</h1>
+            <p>${book.descricao}</p>
+          </div>`;
+          res.appendChild(bookCard)
+          console.log(data)
+          console.log(book.titulo)
+          console.log(nomeFormatado)
+        })
+        
+      }) // Exibe o resultado no console
+      .catch(error => console.log('error', error)); // Trata erros na requisição
+  });
+};
 
-    } if (!achado) {
-      res.innerHTML += 'Nenhum livro encontrado'
-    }
-  }
-
-  )
-  res.appendChild(button) 
-}
 
 const adicionar = ()=>{
   res.innerHTML = ''
