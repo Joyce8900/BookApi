@@ -20,17 +20,12 @@ const listar = () => {
 
         bookCard.innerHTML = `<div id='resposta'>
           <img src='${book.image}' id='image' alt=${book.title}>
-          <div>
-              <h3>${book.titulo}</h3>
-              <p>${book.descricao}</p>
-              <h4><small>Autor: ${book.autor}</small></h4>
-              <h4><small>Gênero: ${book.genero}</small></h4>
-          </div>
+          
         </div>`;
-        booksContainer.appendChild(bookCard); // Adiciona o card ao container de livros
+        booksContainer.appendChild(bookCard); 
       });
     })
-    .catch(error => console.error('Erro:', error)); // Trata erros na requisição
+    .catch(error => console.error('Erro:', error)); 
 };
 
 const buscar = ()=>{
