@@ -1,6 +1,18 @@
 body{
   background: hwb(240 39% 17%);
   font: normal 2.5vh Roboto; 
+
+}
+#titulo{
+  font-size: medium;
+  font-style: normal;
+  color: rgb(31, 30, 30);
+}
+h4{
+  margin-top: 0%;
+  font-size: small;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #menu{
   visibility: hidden;
@@ -14,7 +26,9 @@ body{
 #resposta {
   display: flex;
   align-items: center; 
-  gap: 16px; 
+  gap: 1.6vh; 
+  border: .1vh solid grey;
+  border-radius: 1vh;
 }
 #resposta div {
   display: flex;
@@ -88,7 +102,7 @@ input {
 #books {
   display: flex;
   flex-wrap: wrap; 
-  gap: 16px; 
+  gap: 1.6vh; 
 }
 
 button{
@@ -105,10 +119,10 @@ header{
 #msg{
   display: flex;
   text-align: center;
-  padding: 10px;
+  padding: 1.0vh;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 2.0vh;
   align-content: center;
   align-items: center;
 }
@@ -116,12 +130,12 @@ section{
   background: white;
   border-radius: 2vh;
   padding: .4vh;
-  width: 200vh;
+  width: 100.0vh;
   margin: auto;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.432);
 
 }
 div{
   text-align: center;
-  padding: 10px;
+  padding: 1.0vh;
 }

@@ -10,7 +10,7 @@ const menu1=()=>{
 const listar = () => {
   menu.style.visibility = 'visible'
   buttons.style.visibility = 'hidden';
-  fetch('https://books-api-v2.vercel.app/api/books/')
+  fetch('https://books-api-v3.vercel.app/api/books/')
     .then(response => response.json()) // Converte a resposta em JSON
     .then(data => {
       const booksContainer = document.getElementById('books'); // Seleciona o elemento onde os livros serão exibidos
@@ -20,7 +20,9 @@ const listar = () => {
         bookCard.classList.add('book-card'); // Adiciona uma classe para estilização
 
         bookCard.innerHTML = `<div id='resposta'>
-          <img src='${book.image}' id='image' alt=${book.title}>
+          
+          <h1 id="titulo">${book.titulo}</h1>
+          <h4>${book.genero}</h4>
           
         </div>`;
         booksContainer.appendChild(bookCard); 
@@ -120,22 +122,25 @@ const adicionar = ()=>{
     let nome = window.document.getElementById('inputNome').value
     let autor = window.document.getElementById('inputAutor').value
     let ano = window.document.getElementById('inputAno').value
-    if (nome && autor && ano) {
-      let livros = JSON.parse(localStorage.getItem('livros')) || []
-      if (!livroExiste(nome)) {
-        obj.livros.push(
-      { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
-        
-        localStorage.setItem('livros', JSON.stringify(obj.livros));
-
-        listar()
-        
-      } else {
-        res.innerHTML += '<br>O livro já existe na lista.'
-      }
-    }else{
-      res.innerHTML += '<br>Preencha todos os campos'
-    }    
+    var requestOptions = {
+      method: 'POST',
+      body: raw,
+      headers: {
+        "Content-Type": "application/json"  
+      },
+      redirect: 'follow'
+    };
+    var raw = JSON.stringify({
+      "titulo": nome,  
+      "descricao": "descrição do livro",  
+      "genero": "genero do livro",  
+      "ano_pub": ano,  
+      "autor": autor
+    });
+    
+    fetch("https://books-api-v3.vercel.app/api/books/", requestOptions).then(response => response.json()).then(data =>{
+      console.log(data)
+    }).catch(err =>console.log(err,"Erro"))
   })
 }
 
